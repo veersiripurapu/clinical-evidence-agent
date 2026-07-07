@@ -1,4 +1,4 @@
-# AI Clinical Evidence Agent — Treatment Option Review
+# AI Clinical Evidence Agent - Treatment Option Review
 
 A clinician-facing prototype that summarizes a **synthetic** patient profile,
 retrieves trusted medical evidence, compares treatment options, and produces a
@@ -140,9 +140,9 @@ clinical-evidence-agent/
 ## Future work (v2)
 
 - **Semantic retrieval** via embeddings, replacing keyword matching.
-- **Entailment-based citation verification** — checking that a cited source truly
+- **Entailment-based citation verification** - checking that a cited source truly
   supports each specific claim, not just that a citation is present.
-- **Richer patient-completeness handling** — currently keyword retrieval treats a
+- **Richer patient-completeness handling** - currently keyword retrieval treats a
   sparse record and a rich record similarly at the retrieval stage; the
   content safe-stop compensates, but a fuller version would weight retrieval by
   record completeness.
