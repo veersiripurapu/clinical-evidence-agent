@@ -1,7 +1,7 @@
-# Project Story — AI Clinical Evidence Agent
+# Project Story - AI Clinical Evidence Agent
 
 *A clinician-facing prototype that turns a synthetic patient case into a cited,
-audited evidence brief — built to demonstrate responsible, human-in-the-loop
+audited evidence brief - built to demonstrate responsible, human-in-the-loop
 medical AI, not autonomous diagnosis.*
 
 **🔗 Live demo:** https://clinical-evidence-agent.streamlit.app
