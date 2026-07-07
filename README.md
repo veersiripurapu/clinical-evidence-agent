@@ -71,6 +71,9 @@ in three ways: a verified brief, a **no-evidence** safe-stop, or an
 | SYN-KOA-001 | Severe OA, failed conservative care, comorbidities | Full verified brief |
 | SYN-KOA-002 | Moderate OA, minimal prior treatment | Conservative-leaning brief |
 | SYN-KOA-003 | Sparse record (extensive missing data) | **Declined** — insufficient data |
+*Patient 3 (sparse record) is declined rather than answered:*
+
+![Insufficient-data safe-stop](screenshots/safe_stop_patient3.png)
 
 ## Safety evaluation
 
@@ -78,6 +81,7 @@ An evaluation notebook (`notebooks/06_evaluation.ipynb`) runs an 8-test safety
 suite: full-brief generation, content safe-stop, every-claim-cited,
 forbidden-claim detection, no invented success rates, missing-info surfacing,
 input-responsiveness, and citation integrity. **Result: 8/8 passed.**
+![8/8 safety tests passing](screenshots/safety_tests_8of8.png)
 
 ---
 
