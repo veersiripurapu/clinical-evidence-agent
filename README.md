@@ -1,5 +1,7 @@
 # AI Clinical Evidence Agent - Treatment Option Review
 
+**🔗 Live demo:** https://clinical-evidence-agent.streamlit.app
+
 A clinician-facing prototype that summarizes a **synthetic** patient profile,
 retrieves trusted medical evidence, compares treatment options, and produces a
 **cited, audited evidence brief for physician review**.
