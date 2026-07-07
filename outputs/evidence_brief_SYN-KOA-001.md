@@ -1,6 +1,6 @@
 # Clinical Evidence Brief
 
-*Generated: 2026-07-06 | Patient: SYN-KOA-001 (SYNTHETIC)*
+*Generated: 2026-07-07 | Patient: SYN-KOA-001 (SYNTHETIC)*
 
 > **Intended use:** This brief is for clinician review only. It uses synthetic data. It does not diagnose, prescribe, or recommend a final treatment. A licensed clinician must review everything below before any decision.
 

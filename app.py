@@ -20,6 +20,7 @@ PATIENTS_DIR = BASE_DIR / "data" / "patients"
 sys.path.insert(0, str(SRC_DIR))
 
 from orchestrator import run_pipeline, save_brief  # noqa: E402
+from qa_agent import answer_question
 
 
 st.set_page_config(page_title="Clinical Evidence Agent", layout="wide")
@@ -198,9 +199,19 @@ elif status == "ok":
     with st.expander("Audit details"):
         st.json(audit)
 
-    st.divider()
-    st.markdown(brief_markdown)
+        st.divider()
+        st.markdown(brief_markdown)
 
+        st.divider()
+        st.subheader("Ask an evidence question")
+        st.caption("Answers are drawn only from the selected synthetic patient and the curated evidence cards. It will not diagnose, prescribe, or choose a treatment.")
+        user_question = st.text_input("Your question", placeholder="e.g. Why is A1C important for this patient?", key="qa_input")
+        if st.button("Answer question"):
+            qa = answer_question(user_question, result)
+            st.markdown(qa["answer_markdown"])
+            if qa.get("matched_claims"):
+                with st.expander("Evidence claims used in this answer"):
+                    st.json(qa["matched_claims"])
 
 # -----------------------------
 # Unknown status
