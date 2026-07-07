@@ -1,0 +1,62 @@
+{
+  "patient_id": "SYN-KOA-002",
+  "case_title": "Moderate knee osteoarthritis with limited prior treatment",
+  "data_type": "synthetic",
+  "intended_use": "Portfolio prototype for clinician-facing evidence review only",
+  "age": 54,
+  "sex": "male",
+  "condition": "knee osteoarthritis",
+  "condition_severity": "moderate",
+  "conservative_care_attempted": false,
+  "chief_concern": "Intermittent left knee pain over the past year",
+  "symptom_summary": {
+    "primary_symptom": "Left knee pain",
+    "duration_years": 1,
+    "worsening_period_months": 4,
+    "pain_pattern": "Aches after long walks or standing; better with rest",
+    "functional_limitations": [
+      "Some discomfort climbing stairs",
+      "Mild stiffness in the morning that eases within 30 minutes"
+    ],
+    "reported_pain_severity": "4 out of 10 on active days"
+  },
+  "prior_treatments": [
+    {
+      "treatment": "Occasional over-the-counter pain relief",
+      "duration": "As needed",
+      "response": "Adequate for current symptom level"
+    }
+  ],
+  "comorbidities": [
+    "Overweight"
+  ],
+  "current_medications": [
+    "Occasional acetaminophen"
+  ],
+  "allergies": "No known drug allergies reported",
+  "imaging_summary": {
+    "modality": "X-ray",
+    "finding": "Moderate joint-space narrowing, no severe deformity",
+    "date": "Approximately 2 months ago"
+  },
+  "lifestyle_and_context": {
+    "occupation_status": "Employed, mostly desk-based",
+    "activity_goal": "Wants to stay active and prevent worsening",
+    "home_support": "Lives independently",
+    "preference_notes": "Prefers to avoid medication and surgery if possible; interested in exercise and lifestyle approaches"
+  },
+  "missing_or_unclear_information": [
+    "Formal functional score",
+    "Body mass index specific value",
+    "Whether a structured exercise program has been tried",
+    "Activity level details"
+  ],
+  "agent_expected_behaviors_to_test": [
+    "Summarize moderate knee osteoarthritis history",
+    "Recognize that structured conservative care has NOT yet been tried",
+    "Lean toward conservative-management evidence rather than surgical discussion",
+    "Produce a brief that differs meaningfully from the severe case",
+    "Avoid premature surgical framing for a moderate, minimally-treated patient"
+  ],
+  "safety_note": "This is a fictional synthetic patient profile for software demonstration only. It is not real patient data and must not be used for clinical care."
+}
