@@ -202,16 +202,40 @@ elif status == "ok":
         st.divider()
         st.markdown(brief_markdown)
 
-        st.divider()
-        st.subheader("Ask an evidence question")
-        st.caption("Answers are drawn only from the selected synthetic patient and the curated evidence cards. It will not diagnose, prescribe, or choose a treatment.")
-        user_question = st.text_input("Your question", placeholder="e.g. Why is A1C important for this patient?", key="qa_input")
-        if st.button("Answer question"):
-            qa = answer_question(user_question, result)
-            st.markdown(qa["answer_markdown"])
-            if qa.get("matched_claims"):
-                with st.expander("Evidence claims used in this answer"):
-                    st.json(qa["matched_claims"])
+    st.divider()
+    st.subheader("Ask an evidence question")
+    st.caption(
+        "Answers are drawn only from the selected synthetic patient and the curated "
+        "evidence cards. It will not diagnose, prescribe, or choose a treatment."
+    )
+
+    with st.expander("Example questions"):
+        st.markdown(
+            "- Why does A1C matter for this patient?\n"
+            "- Does this patient need surgery?\n"
+            "- What non-surgical options are supported?\n"
+            "- Why should NSAID use be reviewed?\n"
+            "- What are the surgery risks?"
+        )
+
+    if "qa_result" not in st.session_state:
+        st.session_state.qa_result = None
+
+    user_question = st.text_input(
+        "Your question",
+        placeholder="e.g. Why is A1C important for this patient?",
+        key="qa_input",
+    )
+
+    if st.button("Answer question"):
+        st.session_state.qa_result = answer_question(user_question, result)
+
+    qa = st.session_state.qa_result
+    if qa:
+        st.markdown(qa["answer_markdown"])
+        if qa.get("matched_claims"):
+            with st.expander("Evidence claims used in this answer"):
+                st.json(qa["matched_claims"])
 
 # -----------------------------
 # Unknown status

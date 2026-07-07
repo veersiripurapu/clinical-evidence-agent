@@ -24,6 +24,10 @@ DECISION_PATTERNS = [
     r"\bdo\s+they\s+need\b",
     r"\bdoes\s+(he|she|the patient|this patient)\s+need\b",
     r"\bis\s+surgery\s+(required|needed|necessary)\b",
+    r"\bis\s+(surgery|knee replacement|arthroplasty)\s+(right|appropriate|best)\b",
+    r"\bwould\s+you\s+recommend\b",
+    r"\bdo\s+you\s+recommend\b",
+    r"\bshould\s+(surgery|knee replacement|arthroplasty)\s+be\s+done\b",
     r"\bwhich\s+treatment\s+is\s+best\b",
     r"\bwhat\s+is\s+the\s+best\b",
     r"\bcan\s+(they|he|she|the patient)\s+(keep|start|stop|continue|take)\b",
@@ -123,7 +127,7 @@ def select_claims(question, evidence_units):
         if sid in wanted_sources:
             for claim in unit.get("allowed_claims", []):
                 if claim not in seen:
-                    selected.append({"claim": claim, "citation": label, "source_id": sid})
+                    selected.append({"claim": claim, "citation": label, "source_id": sid, "title": unit.get("title", "")})
                     seen.add(claim)
 
     # Pass 2 (fallback): word-overlap on any claim, if we have too few
@@ -136,7 +140,7 @@ def select_claims(question, evidence_units):
                     continue
                 claim_words = set(re.findall(r"[a-zA-Z]+", claim.lower()))
                 if qwords & claim_words:
-                    selected.append({"claim": claim, "citation": label, "source_id": sid})
+                    selected.append({"claim": claim, "citation": label, "source_id": sid, "title": unit.get("title", "")})
                     seen.add(claim)
 
     return selected[:5]  # cap answer length
