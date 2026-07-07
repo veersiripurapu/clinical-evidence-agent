@@ -85,6 +85,29 @@ input-responsiveness, and citation integrity. **Result: 8/8 passed.**
 
 ---
 
+## Bounded evidence Q&A
+
+The app includes a question box for asking about the selected patient — but it is
+**not a chatbot.** To stay consistent with the project's core principle, it answers
+**only** by selecting verified claims from the retrieved evidence cards, with
+citations. It never generates medical claims from model memory.
+
+Two behaviors matter most:
+
+- **It cites everything.** Every answer is assembled from allowed evidence claims,
+  each tagged with its source (e.g. `[EVID-006]`), and the exact claims used are
+  shown in an expander.
+- **It refuses to decide.** When asked a decision question ("Does this patient need
+  surgery?"), it leads with an explicit note that it cannot make that call — that's
+  for a clinician — and then shares the cited, evidence-supported considerations.
+
+![Q&A — a decision question is answered with a clinician-review disclaimer and cited claims](screenshots/qa_surgery_question.png)
+
+![Q&A — an evidence question answered from curated, cited sources](screenshots/qa_a1c_question.png)
+
+For the declined patient (sparse record), the Q&A does not appear at all — if the
+pipeline declined to analyze the case, the Q&A declines too.
+
 ## How to run
 
 ```bash
