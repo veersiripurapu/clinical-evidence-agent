@@ -160,22 +160,20 @@ clinical-evidence-agent/
 
 - The evidence library is small and curated, not a live search of all literature;
   relevant evidence may be missing.
-- Retrieval uses keyword/tag matching, which cannot resolve synonyms or judge
-  semantic relevance the way embeddings can.
+- Retrieval is hybrid (keyword + semantic embeddings) with an explicit clinical-relevance layer;    the clinical boost rules are hand-authored for knee osteoarthritis and would need a more systematic approach to scale to other conditions.
 - The citation verifier performs **structural** checks (is a claim cited? does it
   cross a declared fence?), not deep semantic entailment.
 - Synthetic data only; outputs demonstrate workflow and guardrails, not clinical accuracy.
 
-## Future work (v2)
+## Future work
 
-- **Semantic retrieval** via embeddings, replacing keyword matching.
-- **Entailment-based citation verification** - checking that a cited source truly
-  supports each specific claim, not just that a citation is present.
-- **Richer patient-completeness handling** - currently keyword retrieval treats a
-  sparse record and a rich record similarly at the retrieval stage; the
-  content safe-stop compensates, but a fuller version would weight retrieval by
-  record completeness.
-- Additional conditions beyond knee osteoarthritis.
+- **Entailment-based citation verification** — checking that a cited source truly supports each specific claim, not just that a citation is present.
+- **Finer-grained coverage rules** — e.g. always include a "not recommended" option (like arthroscopy) when surgery is under discussion.
+- **A scalable way to encode clinical relevance** beyond hand-authored rules, to extend past knee osteoarthritis.
+- **Clinician-reviewed evaluation cases** to strengthen the safety suite.
+- **Additional conditions** beyond knee osteoarthritis.
+
+📄 v2 retrieval work: [Hybrid Semantic Retrieval + Clinical-Relevance Layer](docs/v2_retrieval_upgrade.md)
 
 ---
 
