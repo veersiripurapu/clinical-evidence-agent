@@ -26,14 +26,15 @@ from pathlib import Path
 
 from patient_summary_agent import load_patient, build_summary, list_missing_info
 from question_builder import build_pico
-from evidence_retriever import build_patient_context, retrieve
+from evidence_retriever import build_patient_context
+from semantic_retriever import retrieve_faceted
 from evidence_extractor import extract_all
 from brief_generator import generate_brief
 from citation_verifier import verify
 from patient_completeness import assess_completeness
 
 
-def run_pipeline(patient_file, summaries_dir=None, top_k=6):
+def run_pipeline(patient_file, summaries_dir=None, top_k=8):
     """
     Run the full clinical-evidence pipeline for one patient file.
 
@@ -74,9 +75,13 @@ def run_pipeline(patient_file, summaries_dir=None, top_k=6):
     # 2. Clinical question
     pico = build_pico(patient)
 
-    # 3. Retrieve (patient-aware)
-    retrieval_text = pico["clinical_question"] + " " + build_patient_context(patient)
-    results, retrieval_terms = retrieve(retrieval_text, summaries_dir, top_k=top_k)
+# 3. Retrieve — hybrid (keyword + faceted semantic) with clinical-relevance layer
+    results, retrieval_terms = retrieve_faceted(
+        patient,
+        summaries_dir,
+        clinical_question=pico["clinical_question"],
+        top_k=top_k,
+    )
 
     # Evidence safe-stop: no evidence -> no brief. The conductor won't fake a song.
     if not results:
